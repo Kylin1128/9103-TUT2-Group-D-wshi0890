@@ -119,8 +119,8 @@ for (let i = 0; i < 30; i++) {
 function drawClock() {
   // Calculate the current hour with smooth transition
   let elapsedTime = millis() - startTime;
-  let hours = (elapsedTime / 2000) % 12;  // Use floating-point hours for smooth movement
-
+  // Use floating-point hours for smooth movement
+  let hours = (elapsedTime / 2000) % 12;
   // Draw hour marks
   for (let i = 0; i < 12; i++) {
     let angle = map(i, 0, 12, 0, 360) - 90;
@@ -211,16 +211,16 @@ function drawLightShadow(){
     //claculate the distance between vertical column
     let shallowVerticalDistance = windowHeight / 7 + windowHeight / 35;
 
-    // Calculate offset based on elapsed time
+    // Calculate offset based on elapsed time for smooth movement
     let elapsedTime = millis() - startTime;
-    let offset = floor((elapsedTime / 2000) % 12) * 10;
+    let offset = (elapsedTime / 2000) % 12 * 10;
 
     //Use loop to draw shape
     for (let col = 0; col < 5; col++) {
       for (let row = 0; row < 3; row++) {
         for (let i = 0; i < 20; i++) {
-          let dx = col * shallowDistanceX + offset;
-          let dy = 1 * row * shallowDistanceY + col * shallowVerticalDistance + offset;
+          let dx = col * shallowDistanceX + 6 * offset;
+          let dy = 1 * row * shallowDistanceY + col * shallowVerticalDistance + 5 * offset;
           //calculate shallow shape value
           let x1 = baseUpX1 + i + dx;
           let y1 = baseUpY1 + 2 * i + dy;
