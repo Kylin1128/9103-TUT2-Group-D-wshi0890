@@ -47,8 +47,8 @@ function setup() {
   generateCentredCircle();
 
   // Initialize clock variables
-  clockX = windowWidth / 2.02;
-  clockY = windowHeight / 2.08;
+  clockX = windowWidth / 2.03;
+  clockY = windowHeight / 2.07;
   clockRadius = min(windowWidth, windowHeight) / 8;
   startTime = millis();
 }
@@ -209,12 +209,17 @@ function drawLightShadow(){
     let shallowDistanceY = shallowEmptyY + 2 * windowHeight / 7;
     //claculate the distance between vertical column
     let shallowVerticalDistance = windowHeight / 7 + windowHeight / 35;
+
+    // Calculate offset based on elapsed time
+    let elapsedTime = millis() - startTime;
+    let offset = floor((elapsedTime / 2000) % 12) * 10;
+
     //Use loop to draw shape
     for (let col = 0; col < 5; col++) {
       for (let row = 0; row < 3; row++) {
         for (let i = 0; i < 20; i++) {
-          let dx = col * shallowDistanceX;
-          let dy = 1 * row * shallowDistanceY + col * shallowVerticalDistance;
+          let dx = col * shallowDistanceX + offset;
+          let dy = 1 * row * shallowDistanceY + col * shallowVerticalDistance + offset;
           //calculate shallow shape value
           let x1 = baseUpX1 + i + dx;
           let y1 = baseUpY1 + 2 * i + dy;
