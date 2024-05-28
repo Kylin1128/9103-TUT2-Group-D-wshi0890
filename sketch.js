@@ -45,6 +45,12 @@ function setup() {
   generateFeaturedRectangles();
 
   generateCentredCircle();
+
+  // Initialize clock variables
+  clockX = windowWidth / 2.02;
+  clockY = windowHeight / 2.08;
+  clockRadius = min(windowWidth, windowHeight) / 8;
+  startTime = millis();
 }
 
 function draw() {
@@ -53,6 +59,9 @@ function draw() {
   // Draw canvas for the drawing elements
   drawInsideCanvas();
   drawFrame();
+
+  // Draw clock
+  drawClock();
 
   // Draw purple lines in the canvas
   // This must be at the bottom of the canvas
@@ -71,6 +80,7 @@ function draw() {
   // This must be on the top of the canvas
   drawShadow();
   drawLightShadow();
+  
 }
 
 function windowResized() {
@@ -104,6 +114,38 @@ for (let i = 0; i < 30; i++) {
     let frameHeight = insideCanvas.height + i;
     rect(frameX, frameY, frameWidth, frameHeight);
   }
+}
+
+function drawClock() {
+  // Calculate the current hour
+  let elapsedTime = millis() - startTime;
+  let hours = floor((elapsedTime / 2000) % 12);
+
+  // Draw hour marks
+  for (let i = 0; i < 12; i++) {
+    let angle = map(i, 0, 12, 0, 360) - 90;
+    let x = clockX + cos(angle) * (clockRadius - 20);
+    let y = clockY + sin(angle) * (clockRadius - 20);
+    fill(255);
+    noStroke();
+    ellipse(x, y, 10, 10);
+  }
+
+  // Draw hour hand
+  let hourAngle = map(hours, 0, 12, 0, 360) - 90;
+  let hourX = clockX + cos(hourAngle) * (clockRadius - 40);
+  let hourY = clockY + sin(hourAngle) * (clockRadius - 40);
+  stroke(255);
+  strokeWeight(8);
+  line(clockX, clockY, hourX, hourY);
+
+  // Draw minute hand (static at 12)
+  let minuteAngle = -90;
+  let minuteX = clockX + cos(minuteAngle) * (clockRadius - 30);
+  let minuteY = clockY + sin(minuteAngle) * (clockRadius - 30);
+  stroke(255);
+  strokeWeight(6);
+  line(clockX, clockY, minuteX, minuteY);
 }
 
 let purpleLinesDataArray = [
@@ -314,3 +356,4 @@ function drawCentredCircle() {
     circle.display();
   }
 }
+
