@@ -117,9 +117,9 @@ for (let i = 0; i < 30; i++) {
 }
 
 function drawClock() {
-  // Calculate the current hour
+  // Calculate the current hour with smooth transition
   let elapsedTime = millis() - startTime;
-  let hours = floor((elapsedTime / 2000) % 12);
+  let hours = (elapsedTime / 2000) % 12;  // Use floating-point hours for smooth movement
 
   // Draw hour marks
   for (let i = 0; i < 12; i++) {
@@ -131,7 +131,7 @@ function drawClock() {
     ellipse(x, y, 10, 10);
   }
 
-  // Draw hour hand
+  // Draw hour hand with smooth movement
   let hourAngle = map(hours, 0, 12, 0, 360) - 90;
   let hourX = clockX + cos(hourAngle) * (clockRadius - 40);
   let hourY = clockY + sin(hourAngle) * (clockRadius - 40);
@@ -147,6 +147,7 @@ function drawClock() {
   strokeWeight(6);
   line(clockX, clockY, minuteX, minuteY);
 }
+
 
 let purpleLinesDataArray = [
   // Horizontal lines
