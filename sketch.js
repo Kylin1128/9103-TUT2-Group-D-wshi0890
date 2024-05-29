@@ -46,6 +46,12 @@ function setup() {
 
   generateCentredCircle();
 
+  // Initialize clock dimensions
+  updateClockDimensions();
+
+  // Initialize start time
+  startTime = millis();
+
   // Initialize clock variables
   clockX = windowWidth / 2.03;
   clockY = windowHeight / 2.07;
@@ -94,6 +100,9 @@ function windowResized() {
 
   // Regenerate small rectangles
   generateSmallRectangles();
+
+  // Update clock dimensions
+  updateClockDimensions();
 }
 
 // Draw inside canvas based on the insideCanvas class
@@ -386,3 +395,8 @@ function drawCentredCircle() {
   }
 }
 
+function updateClockDimensions() {
+  clockX = windowWidth / 2.03;
+  clockY = windowHeight / 2.07;
+  clockRadius = min(windowWidth, windowHeight) / 8;
+}
