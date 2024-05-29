@@ -4,6 +4,9 @@ let limeGreen, roseRed, milkYellow, linePurple, shallowPurple;
 // Create dimension for inside canvas
 let insideCanvas;
 
+// Create clock
+let clock;
+
 // Array to store small rectangles
 let smallRectangles = [];
 let numOfSmallRects = 60;
@@ -46,17 +49,8 @@ function setup() {
 
   generateCentredCircle();
 
-  // Initialize clock dimensions
-  updateClockDimensions();
-
-  // Initialize start time
-  startTime = millis();
-
-  // Initialize clock variables
-  clockX = windowWidth / 2.03;
-  clockY = windowHeight / 2.07;
-  clockRadius = min(windowWidth, windowHeight) / 8;
-  startTime = millis();
+  // Initialize clock
+  clock = new Clock(windowWidth / 2.03, windowHeight / 2.07, min(windowWidth, windowHeight) / 8);
 }
 
 function draw() {
@@ -72,7 +66,7 @@ function draw() {
   // Draw purple lines in the canvas
   // This must be at the bottom of the canvas
   drawPurpleLines();
-  
+
   // Draw small rectangles
   drawSmallRectangles();
 
@@ -86,7 +80,6 @@ function draw() {
   // This must be on the top of the canvas
   drawShadow();
   drawLightShadow();
-  
 }
 
 function windowResized() {
@@ -102,61 +95,29 @@ function windowResized() {
   generateSmallRectangles();
 
   // Update clock dimensions
-  updateClockDimensions();
+  clock.updatePosition(windowWidth / 2.03, windowHeight / 2.07);
+  clock.updateSize(min(windowWidth, windowHeight) / 8);
 }
 
 // Draw inside canvas based on the insideCanvas class
 function drawInsideCanvas() {
-    // Draw inside canvas
-    fill(shallowPurple);
-    noStroke();
-    rect(insideCanvas.x, insideCanvas.y, insideCanvas.width, insideCanvas.height);
+  // Draw inside canvas
+  fill(shallowPurple);
+  noStroke();
+  rect(insideCanvas.x, insideCanvas.y, insideCanvas.width, insideCanvas.height);
 }
 
 function drawFrame() {
 for (let i = 0; i < 30; i++) {
-    noFill();
-    stroke(73 + 3 * i, 38 + i, 1 + i);
-    let frameX = insideCanvas.x - i / 2;
-    let frameY = insideCanvas.y - i / 2;
-    let frameWidth = insideCanvas.width + i;
-    let frameHeight = insideCanvas.height + i;
-    rect(frameX, frameY, frameWidth, frameHeight);
+  noFill();
+  stroke(73 + 3 * i, 38 + i, 1 + i);
+  let frameX = insideCanvas.x - i / 2;
+  let frameY = insideCanvas.y - i / 2;
+  let frameWidth = insideCanvas.width + i;
+  let frameHeight = insideCanvas.height + i;
+  rect(frameX, frameY, frameWidth, frameHeight);
   }
 }
-
-function drawClock() {
-  // Calculate the current hour with smooth transition
-  let elapsedTime = millis() - startTime;
-  // Use floating-point hours for smooth movement
-  let hours = (elapsedTime / 2000) % 12;
-  // Draw hour marks
-  for (let i = 0; i < 12; i++) {
-    let angle = map(i, 0, 12, 0, 360) - 90;
-    let x = clockX + cos(angle) * (clockRadius - 20);
-    let y = clockY + sin(angle) * (clockRadius - 20);
-    fill(255);
-    noStroke();
-    ellipse(x, y, 10, 10);
-  }
-
-  // Draw hour hand with smooth movement
-  let hourAngle = map(hours, 0, 12, 0, 360) - 90;
-  let hourX = clockX + cos(hourAngle) * (clockRadius - 40);
-  let hourY = clockY + sin(hourAngle) * (clockRadius - 40);
-  stroke(255);
-  strokeWeight(8);
-  line(clockX, clockY, hourX, hourY);
-
-  // Draw minute hand (static at 12)
-  let minuteAngle = -90;
-  let minuteX = clockX + cos(minuteAngle) * (clockRadius - 30);
-  let minuteY = clockY + sin(minuteAngle) * (clockRadius - 30);
-  stroke(255);
-  strokeWeight(6);
-  line(clockX, clockY, minuteX, minuteY);
-}
-
 
 let purpleLinesDataArray = [
   // Horizontal lines
@@ -197,11 +158,11 @@ function drawPurpleLines() {
   noStroke();
   // Define key colors for the gradient
   let colors = [
-    color(130, 255, 213), // Light Green
-    color(135, 206, 235), // Sky Blue
-    color(255, 165, 0),   // Orange
-    color(255, 255, 255),  // White
-    color(130, 255, 213) // Light Green
+    color(255, 182, 193), // Spring
+    color(152, 255, 152), // Summer
+    color(255, 229, 180),   // Fall
+    color(173, 216, 230),  // Winter
+    color(255, 182, 193) // Spring
   ];
   // Adjust the speed of color transition
   let t = (elapsedTime * 0.0001) % 1;
@@ -223,7 +184,7 @@ function lerpColorArray(colors, t) {
 //This is light part of shallow
 function drawLightShadow(){
     fill(255, 10);
-    noStroke;
+    noStroke();
     //Create base part of shallow triangles
     //Base elements of shallow
     let baseUpX1 = windowWidth / 5;
@@ -244,7 +205,7 @@ function drawLightShadow(){
     let shallowVerticalDistance = windowHeight / 7 + windowHeight / 35;
 
     // Calculate offset based on elapsed time for smooth movement
-    let elapsedTime = millis() - startTime;
+    let elapsedTime = millis() - clock.startTime;
     let offset = (elapsedTime / 2000) % 12 * 10;
 
     //Use loop to draw shape
@@ -277,7 +238,6 @@ function drawShadow() {
     noStroke();
     rect(0, 0, windowWidth, windowHeight);
 }
-
 
 function generateSmallRectangles() {
   let colors = [limeGreen, roseRed, milkYellow];
@@ -393,10 +353,4 @@ function drawCentredCircle() {
     circle.updateSize(insideCanvas.width, insideCanvas.height);
     circle.display();
   }
-}
-
-function updateClockDimensions() {
-  clockX = windowWidth / 2.03;
-  clockY = windowHeight / 2.07;
-  clockRadius = min(windowWidth, windowHeight) / 8;
 }
