@@ -20,6 +20,9 @@ let featuredRectArray = [];
 // Array to generate centred circles in rectangles
 let centredCircleArray = [];
 
+let animationFrameId;
+let animationStartTime;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -51,6 +54,11 @@ function setup() {
 
   // Initialize clock
   clock = new Clock(windowWidth / 2.03, windowHeight / 2.07, min(windowWidth, windowHeight) / 8);
+
+  // Create animation
+  smallRectAnimationInterval = setInterval(updateSmallRectangles, 2000);
+  animationStartTime = millis();
+  startAnimation();
 }
 
 function draw() {
@@ -61,7 +69,7 @@ function draw() {
   drawFrame();
 
   // Draw clock
-  drawClock();
+  clock.draw();
 
   // Draw purple lines in the canvas
   // This must be at the bottom of the canvas
@@ -353,4 +361,22 @@ function drawCentredCircle() {
     circle.updateSize(insideCanvas.width, insideCanvas.height);
     circle.display();
   }
+}
+
+// Start animation
+function startAnimation() {
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+function animate() {
+  let elapsedTime = millis() - animationStartTime;
+
+  draw();
+
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+// Update Rect
+function updateSmallRectangles() {
+  generateSmallRectangles();
 }
