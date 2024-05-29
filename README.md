@@ -6,6 +6,7 @@
   - [PART 2: Details of my Individual Approach to Animating the Group Code](#part-2-details-of-my-individual-approach-to-animating-the-group-code)
     - [1. Method](#1-method)
     - [2. Animated Properties of the Image](#2-animated-properties-of-the-image)
+    - [3. References to Inspiration](#3-references-to-inspiration)
 
 
 ## PART 1: How to Interact with the Work
@@ -17,5 +18,7 @@ Time-Based
 ### 2. Animated Properties of the Image
 1. **Clock**: I added the clock in the center of the image, where the hour hand travels through one frame every two seconds.
 2. **Shadows**: The shadows will move slowly over time.
-3. 
- 
+3. **PurpleLines**: The purple lines will smoothly change four colors over time.
+### 3. References to Inspiration
+![1](readmeImages/1.png)
+During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
