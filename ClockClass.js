@@ -24,7 +24,7 @@ class Clock {
             let angle = map(i, 0, 12, 0, 360) - 90;
             let x = this.x + cos(angle) * (this.radius - 20);
             let y = this.y + sin(angle) * (this.radius - 20);
-            fill(255);
+            fill(73, 38, 1);
             noStroke();
             ellipse(x, y, 10, 10);
         }
@@ -33,7 +33,7 @@ class Clock {
         let hourAngle = map(hours, 0, 12, 0, 360) - 90;
         let hourX = this.x + cos(hourAngle) * (this.radius - 40);
         let hourY = this.y + sin(hourAngle) * (this.radius - 40);
-        stroke(255);
+        stroke(73, 38, 1);
         strokeWeight(8);
         line(this.x, this.y, hourX, hourY);
 
@@ -41,7 +41,7 @@ class Clock {
         let minuteAngle = -90;
         let minuteX = this.x + cos(minuteAngle) * (this.radius - 30);
         let minuteY = this.y + sin(minuteAngle) * (this.radius - 30);
-        stroke(255);
+        stroke(73, 38, 1);
         strokeWeight(6);
         line(this.x, this.y, minuteX, minuteY);
     }

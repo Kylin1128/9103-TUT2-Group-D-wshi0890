@@ -12,7 +12,9 @@ class PurpleLine {
 
     display(color) {
         fill(color);
+        stroke(73, 38, 1)
         rect(this.drawX, this.drawY, this.drawW, this.drawH);
+        
     }
 
     updateSize(insideCanvasWidth, insideCanvasHeight) {
@@ -20,5 +22,6 @@ class PurpleLine {
         this.drawY = this.y * insideCanvasHeight + insideCanvas.y;
         this.drawW = this.w * insideCanvasWidth;
         this.drawH = this.h * insideCanvasHeight;
+        
     }
 }
