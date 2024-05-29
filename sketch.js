@@ -66,7 +66,7 @@ function draw() {
   // Draw purple lines in the canvas
   // This must be at the bottom of the canvas
   drawPurpleLines();
-
+  
   // Draw small rectangles
   drawSmallRectangles();
 
@@ -184,8 +184,31 @@ function generatePurpleLines() {
 }
 
 function drawPurpleLines() {
+  let elapsedTime = millis();
   noStroke();
-  purpleLinesArray.forEach(line => line.display());
+  // Define key colors for the gradient
+  let colors = [
+    color(130, 255, 213), // Light Green
+    color(135, 206, 235), // Sky Blue
+    color(255, 165, 0),   // Orange
+    color(255, 255, 255),  // White
+    color(130, 255, 213) // Light Green
+  ];
+  // Adjust the speed of color transition
+  let t = (elapsedTime * 0.0001) % 1;
+  let currentColor = lerpColorArray(colors, t);
+  purpleLinesArray.forEach((line) => {
+    line.display(currentColor);
+  });
+}
+
+function lerpColorArray(colors, t) {
+  let numColors = colors.length;
+  let index = t * (numColors - 1);
+  let lowerIndex = floor(index);
+  let upperIndex = min(lowerIndex + 1, numColors - 1);
+  let lerpT = index - lowerIndex;
+  return lerpColor(colors[lowerIndex], colors[upperIndex], lerpT);
 }
 
 //This is light part of shallow

@@ -10,8 +10,8 @@ class PurpleLine {
         this.drawH = this.h;
     }
 
-    display() {
-        fill(linePurple);
+    display(color) {
+        fill(color);
         rect(this.drawX, this.drawY, this.drawW, this.drawH);
     }
 
