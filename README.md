@@ -31,7 +31,7 @@ Time-Based
 
 ![2](readmeImages/2.png)
 
-  In conclusion, my idea is
+  My design concept is to use the overall image as a microcosm of a city. The clocks and shadows show the passage of time during the day. The changing colours of the PurpleLines represent the seasons of the year. The small rectangles that change position and colour every hour symbolize the movement of people in the city, reflecting the busyness and variety of urban life. These elements together show the rhythm and changes of urban life.
   
 ![3](readmeImages/3.png)
 ![4](readmeImages/4.png)
