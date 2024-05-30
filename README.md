@@ -31,6 +31,11 @@ Time-Based
 
 ![2](readmeImages/2.png)
 
+  In conclusion, my idea is
+  
+![3](readmeImages/3.png)
+![4](readmeImages/4.png)
+
 ### 4. Technical Explanation
 I used [millis()](https://p5js.org/reference/#/p5/millis) to obtain the runtime of the program, enabling the smooth movement of the clock's hour hand and the smooth transition of the PurplrLine colors. This is the example from p5.js:
 ```
