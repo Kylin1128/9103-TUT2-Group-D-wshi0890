@@ -11,22 +11,26 @@
 
 
 ## PART 1: How to Interact with the Work
-After loading the page, the animation will start automatically and every 2 seconds the rectangle will update the position and color.
+After loading the page, the animation will start automatically, every 2 seconds the hour hand will move one frame, the PurpleLine will change four colors over time and the smallRectangle will update the position and color.
 
 ## PART 2: Details of my Individual Approach to Animating the Group Code
 ### 1. Method
 Time-Based
+
 ### 2. Animated Properties of the Image
 1. **Clock**: I added the clock in the center of the image, where the hour hand travels through one frame every two seconds.
 2. **Shadows**: The shadows will move slowly over time.
 3. **PurpleLines**: The purple lines will smoothly change four colors over time.
+  
 ### 3. References to Inspiration
   During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
+
 ![1](readmeImages/1.png)
 
   I also like Mondrian's paintings with borders like this, so I added the stroke to my personal section.
 
 ![2](readmeImages/2.png)
+
 ### 4. Technical Explanation
 I used [millis()](https://p5js.org/reference/#/p5/millis) to obtain the runtime of the program, enabling the smooth movement of the clock's hour hand and the smooth transition of the PurplrLine colors. This is the example from p5.js:
 ```
