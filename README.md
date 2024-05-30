@@ -7,6 +7,7 @@
     - [1. Method](#1-method)
     - [2. Animated Properties of the Image](#2-animated-properties-of-the-image)
     - [3. References to Inspiration](#3-references-to-inspiration)
+    - [4. Technical Explanation](#4-technical-explanation)
 
 
 ## PART 1: How to Interact with the Work
@@ -20,5 +21,31 @@ Time-Based
 2. **Shadows**: The shadows will move slowly over time.
 3. **PurpleLines**: The purple lines will smoothly change four colors over time.
 ### 3. References to Inspiration
+  During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
 ![1](readmeImages/1.png)
-During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
+
+  I also like Mondrian's paintings with borders like this, so I added the stroke to my personal section.
+
+![2](readmeImages/2.png)
+### 4. Technical Explanation
+I used [millis()](https://p5js.org/reference/#/p5/millis) to obtain the runtime of the program, enabling the smooth movement of the clock's hour hand and the smooth transition of the PurplrLine colors. This is the example from p5.js:
+```
+function setup() {
+  createCanvas(100, 100);
+
+  describe('A white circle oscillates left and right on a gray background.');
+}
+
+function draw() {
+  background(200);
+
+  // Get the number of seconds the sketch has run.
+  let s = millis() / 1000;
+
+  // Calculate an x-coordinate.
+  let x = 30 * sin(s) + 50;
+
+  // Draw the circle.
+  circle(x, 50, 30);
+}
+```
