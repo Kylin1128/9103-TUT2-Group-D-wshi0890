@@ -27,7 +27,7 @@ Time-Based
 #### Team Members' Animation
 1. **TIAN's**: Click the PurplrLines will generate small circles move along the PurplrLines path.
 2. **WANG's**: Change the size of the circles and the rotation of the large rectangles based on the FFT.
-3. **ZENG's**: The circles transform into small frogs floating in the image.
+3. **ZENG's**: The circles transform into small Caterpillars floating in the image.
   
 ### 3. References to Inspiration
   During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
