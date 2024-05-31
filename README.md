@@ -6,6 +6,8 @@
   - [PART 2: Details of my Individual Approach to Animating the Group Code](#part-2-details-of-my-individual-approach-to-animating-the-group-code)
     - [1. Method](#1-method)
     - [2. Animated Properties of the Image](#2-animated-properties-of-the-image)
+      - [My Animation](#my-animation)
+      - [Team Members' Animation](#team-members-animation)
     - [3. References to Inspiration](#3-references-to-inspiration)
     - [4. Technical Explanation](#4-technical-explanation)
 
@@ -18,9 +20,14 @@ After loading the page, the animation will start automatically, every 2 seconds 
 Time-Based
 
 ### 2. Animated Properties of the Image
+#### My Animation
 1. **Clock**: I added the clock in the center of the image, where the hour hand travels through one frame every two seconds.
 2. **Shadows**: The shadows will move slowly over time.
 3. **PurpleLines**: The purple lines will smoothly change four colors over time.
+#### Team Members' Animation
+1. **TIAN's**: Click the PurplrLines will generate small circles move along the PurplrLines path.
+2. **WANG's**: Change the size of the circles and the rotation of the large rectangles based on the FFT.
+3. **ZENG's**: The circles transform into small frogs floating in the image.
   
 ### 3. References to Inspiration
   During group work, we decided through [this video](https://openprocessing.org/sketch/2259882) to add shadow parts to the canvas. I really like the design and I think I can express the passage of time through this part. Expressing the invisible time through visualization.Because having a shadow means there is sunlight. So I animated this shadow in the personal part. Moving the shadow can show the change in the position of the sun, which expresses the passage of time.
